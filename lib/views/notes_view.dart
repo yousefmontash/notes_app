@@ -7,6 +7,7 @@ import 'package:notes_app/widgets/notes_view_body.dart';
 
 class NotesView extends StatelessWidget {
   const NotesView({super.key});
+  static String id = "notesView";
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,6 @@ class NotesView extends StatelessWidget {
             },
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
-              
             ),
           );
         },

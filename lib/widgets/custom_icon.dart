@@ -16,12 +16,7 @@ class CustomIcon extends StatelessWidget {
       child: Center(
         child: IconButton(
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => EditNoteView(),
-              ),
-            );
+           
           },
           icon:  Icon(
             icon,
