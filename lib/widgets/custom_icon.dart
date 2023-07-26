@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/views/edit_note_view.dart';
 
 class CustomIcon extends StatelessWidget {
   const CustomIcon({super.key,required this.icon});
