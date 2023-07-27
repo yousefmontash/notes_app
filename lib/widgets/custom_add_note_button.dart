@@ -3,11 +3,12 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:notes_app/constants.dart';
 
 class CustomAddNoteButton extends StatelessWidget {
-  const CustomAddNoteButton({super.key});
-
+  const CustomAddNoteButton({super.key, this.onTap});
+final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap:onTap ,
       child: Container(
         alignment: Alignment.center,
         height: 50,
