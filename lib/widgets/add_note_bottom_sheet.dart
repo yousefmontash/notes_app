@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:notes_app/widgets/custom_add_note_button.dart';
 import 'package:notes_app/widgets/custom_text_field.dart';
 
@@ -8,7 +10,7 @@ class AddNoteBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  const Padding(
+    return const Padding(
       padding: EdgeInsets.symmetric(vertical: 32, horizontal: 16),
       child: SingleChildScrollView(
         child: AddNoteForm(),
@@ -59,7 +61,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
           CustomAddNoteButton(
             onTap: () {
               if (formKey.currentState!.validate()) {
-                formKey.currentState!.save();
+                BlocProvider.of<AddNoteCubit>(context).addNote();
               } else {
                 autovalidateMode = AutovalidateMode.always;
                 setState(() {});
