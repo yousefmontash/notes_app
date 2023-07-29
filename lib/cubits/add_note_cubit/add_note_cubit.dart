@@ -12,12 +12,13 @@ class AddNoteCubit extends Cubit<AddNoteState> {
 
   String? title, content;
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-
-  addNote(NoteModel note) {
+  bool isLoading = false;
+  void addNote(NoteModel note) async {
     emit(AddNoteLoading());
+
     try {
-      var noteBox = Hive.box(kNotesBox);
-      noteBox.add(note);
+      var noteBox = Hive.box<NoteModel>(kNotesBox);
+      await noteBox.add(note);
       emit(AddNoteSucceed());
     } catch (e) {
       emit(AddNoteFailed(e.toString()));
