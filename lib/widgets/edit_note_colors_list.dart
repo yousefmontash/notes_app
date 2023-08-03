@@ -1,30 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/constants.dart';
-import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
+import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/widgets/color_item.dart';
 
-class ColorListView extends StatefulWidget {
-  const ColorListView({super.key});
+class EditNoteColorsList extends StatefulWidget {
+  const EditNoteColorsList({super.key, required this.note});
+  final NoteModel note;
 
   @override
-  State<ColorListView> createState() => _ColorListViewState();
+  State<EditNoteColorsList> createState() => _EditNoteColorsListState();
 }
 
-class _ColorListViewState extends State<ColorListView> {
-  int currentIndex = 0;
+class _EditNoteColorsListState extends State<EditNoteColorsList> {
+  late int currentIndex = kColors.indexOf(Color(widget.note.color));
   @override
   Widget build(BuildContext context) {
-    //int currentIndex = 0; the difference between this location and the one above it is that every build will put the variable with zero.
     return ListView.builder(
       itemBuilder: (context, index) {
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 7),
           child: GestureDetector(
             onTap: () {
               currentIndex = index;
-              BlocProvider.of<AddNoteCubit>(context).color =
-                  kColors[currentIndex];
+              widget.note.color = kColors[index].value;
+
               setState(() {});
             },
             child: ColorItem(
@@ -39,4 +38,3 @@ class _ColorListViewState extends State<ColorListView> {
     );
   }
 }
-
