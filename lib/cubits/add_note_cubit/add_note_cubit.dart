@@ -10,10 +10,9 @@ part 'add_note_state.dart';
 class AddNoteCubit extends Cubit<AddNoteState> {
   AddNoteCubit() : super(AddNoteInitial());
 
-  String? title, content;
-  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-  bool isLoading = false;
+  Color color = const Color(0xff1A1423);
   void addNote(NoteModel note) async {
+    note.color = color.value;
     emit(AddNoteLoading());
 
     try {
